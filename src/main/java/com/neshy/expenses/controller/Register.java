@@ -1,0 +1,34 @@
+package com.neshy.expenses.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.neshy.expenses.entity.Expense;
+import com.neshy.expenses.repository.ExpenseRepository;
+
+@RestController
+public class Register {
+
+    @Autowired
+    ExpenseRepository expenseRepository;
+
+    @PostMapping("/expense")
+    public ResponseEntity<HttpStatus> registerExpense(@RequestBody Expense expense) {
+
+        HttpStatus code;
+
+        if(expense != null) {
+            expenseRepository.create(expense);
+            code = HttpStatus.ACCEPTED;
+        }
+        else {
+            code = HttpStatus.BAD_REQUEST;
+        }
+
+        return ResponseEntity.status(code).build();
+    }
+}
