@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.neshy.expenses.entity.Expense;
-import com.neshy.expenses.entity.Income;
+import com.neshy.expenses.dto.ExpenseDTO;
+import com.neshy.expenses.dto.IncomeDTO;
 import com.neshy.expenses.repository.ExpenseRepository;
 import com.neshy.expenses.repository.IncomeRepository;
 
@@ -22,7 +22,7 @@ public class Register {
     IncomeRepository incomeRepository;
     
     @PostMapping("/expense")
-    public ResponseEntity<HttpStatus> registerExpense(@RequestBody Expense expense) {
+    public ResponseEntity<HttpStatus> registerExpense(@RequestBody ExpenseDTO expense) {
 
         HttpStatus code;
 
@@ -39,7 +39,7 @@ public class Register {
 
 
     @PostMapping("/income")
-    public ResponseEntity<HttpStatus> registerIncome(@RequestBody Income income) {
+    public ResponseEntity<HttpStatus> registerIncome(@RequestBody IncomeDTO income) {
 
         HttpStatus code;
 
@@ -53,4 +53,10 @@ public class Register {
 
         return ResponseEntity.status(code).build();
     }
+
+
+
+
+
+    
 }
