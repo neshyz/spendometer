@@ -9,9 +9,11 @@ import com.neshy.expenses.entity.Expense;
 public class ExpenseRepository {
     @Autowired
     IExpenseRepository expenseRepository;
+    @Autowired
+    RegistryRepository registryRepository;
 
     public Expense create(Expense input) {
-
+        registryRepository.insert(Expense.class.getSimpleName());
         return expenseRepository.save(input);
 
     }
