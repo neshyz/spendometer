@@ -14,6 +14,7 @@ public class ExpenseRepository {
 
     public Expense create(Expense input) {
         registryRepository.insert(Expense.class.getSimpleName());
+
         return expenseRepository.save(input);
 
     }

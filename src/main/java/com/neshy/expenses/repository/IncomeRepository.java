@@ -15,9 +15,8 @@ public class IncomeRepository {
 
     
     public Income create(Income income) {
-        // TODO: crear un registry antes de retornar el nuevo Income
-
         registryRepository.insert(Income.class.getSimpleName());
+
         return incomeRepository.save(income);
     }
 }
